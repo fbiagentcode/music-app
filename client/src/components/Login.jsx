@@ -16,6 +16,7 @@ const Login = ({ setAuth }) => {
 
   const loginWithGoogle = async () => {
     await signInWithPopup(firebaseAuth, provider).then((userCred) => {
+      console.log(user);
       if (userCred) {
         setAuth(true);
         window.localStorage.setItem("auth", "true");
@@ -48,7 +49,7 @@ const Login = ({ setAuth }) => {
   useEffect(() => {
     if (window.localStorage.getItem("auth") === "true")
       navigate("/", { replace: true });
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="relative w-screen h-screen">
